@@ -5,6 +5,7 @@ import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ECommerceComponent } from './e-commerce/e-commerce.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
+import { CreateProductComponent } from './create-product/create-product.component';
 
 const routes: Routes = [{
   path: '',
@@ -42,7 +43,13 @@ const routes: Routes = [{
   }, {
     path: 'tables',
     loadChildren: './tables/tables.module#TablesModule',
-  }, {
+
+  },
+  {
+    path:'create',
+   loadChildren: './create-product/create-product.module#CreateProductModule'
+  },
+   {
     path: 'miscellaneous',
     loadChildren: './miscellaneous/miscellaneous.module#MiscellaneousModule',
   }, {
