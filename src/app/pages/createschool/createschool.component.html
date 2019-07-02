@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="col-lg-6">
+      <nb-card>
+        <nb-card-header>Create Topic</nb-card-header>
+        <nb-card-body>
+          <div class="row full-name-inputs">
+            <form [formGroup]="school_form" class="col-md-8">
+              <h5 style="margin-top:20px;">
+                Subtopic:
+              </h5>
+              <div class="input-group" style="margin-top:20px;">
+                <select
+                  formControlName="subtopic_id"
+                  class="form-control"
+                  placeholder="Class"
+                >
+                  <option
+                    value="{{ subtopic.id }}"
+                    *ngFor="let subtopic of subtopics"
+                  >
+                    <p>
+                      {{ subtopic.subtopic_name }}
+                    </p>
+                  </option>
+                </select>
+              </div>
+            </form>
+          </div>
+        </nb-card-body>
+      </nb-card>
+    </div>

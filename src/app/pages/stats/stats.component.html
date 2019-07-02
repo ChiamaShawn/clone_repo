@@ -1,0 +1,9 @@
+<div class="col-lg-8">
+    <nb-card>
+      <nb-card-header>User Sessions</nb-card-header>
+      <nb-card-body>
+          <ng2-smart-table [settings]="settings" [source]="users" (deleteConfirm)="onDeleteConfirm($event)">
+            </ng2-smart-table>
+      </nb-card-body>
+    </nb-card>
+  </div>

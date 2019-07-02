@@ -8,9 +8,39 @@ export const MENU_ITEMS: NbMenuItem[] = [
   //   home: true,
   // },
   {
-    title: 'Dashboard',
+    title: 'Stats',
     icon: 'nb-home',
-    link: '/pages/iot-dashboard',
+    link: '/pages/stats',
+  },
+  {
+    title: 'Create School',
+    icon: 'nb-compose',
+    link: '/pages/create-school',
+  },
+  {
+    title: 'Add Student',
+    icon: 'nb-compose',
+    link: '/pages/create-student',
+  },
+  {
+    title: 'Create Subject',
+    icon: 'nb-compose',
+    link: '/pages/create-subject',
+  },
+  {
+    title: 'Create Topics',
+    icon: 'nb-compose',
+    link: '/pages/create-topics',
+  },
+  {
+    title: 'Create Subtopic',
+    icon: 'nb-compose',
+    link: '/pages/create-subtopic',
+  },
+  {
+    title: 'Make Notes',
+    icon: 'nb-home',
+    link: '/pages/create-notes',
   },
   // {
   //   title: 'FEATURES',

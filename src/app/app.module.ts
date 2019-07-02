@@ -14,6 +14,8 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ThemeModule } from './@theme/theme.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CreateStudentComponent } from './create-student/create-student.component';
+// import { CreateschoolComponent } from './createschool/createschool.component';
 
 @NgModule({
   declarations: [AppComponent],

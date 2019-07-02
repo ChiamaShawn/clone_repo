@@ -1,0 +1,73 @@
+<div class="col-lg-6">
+  <nb-card>
+    <nb-card-header>Create Topic</nb-card-header>
+    <nb-card-body>
+      <div class="row full-name-inputs">
+        <form [formGroup]="topic_form" class="col-md-8">
+          <h5>
+            Subject:
+          </h5>
+          <div class="input-group" style="margin-top:20px;">
+            <select
+              formControlName="subject_id"
+              class="form-control"
+              placeholder="Subject"
+              (change)="onSubjectChange($event.target.value)"
+            >
+              <option *ngFor="let subject of subjects" value="{{ subject.id }}">
+                <p>{{ subject.subject_name }}</p>
+              </option>
+            </select>
+          </div>
+          <h5 style="margin-top:10px;">
+            Class:
+          </h5>
+          <div class="input-group" style="margin-top:20px;" >
+            <select
+            [disabled]="class_enabled"
+              formControlName="class_"
+              class="form-control"
+              placeholder="Class"
+            >
+              <option value="{{class.id}}" *ngFor="let class of classes">
+                <p>{{class.class_name}}</p>
+              </option>
+            </select>
+          </div>
+
+          <div class="input-group" style="margin-top:20px;">
+            <input
+              formControlName="topic_name"
+              type="text"
+              nbInput
+              fullWidth
+              placeholder="Topic Name"
+            />
+          </div>
+          <div class="button-container" style="margin-top:20px;">
+            <input
+              (click)="onClick()"
+              nbButton
+              type="submit"
+              value="Add Topic"
+            />
+          </div>
+        </form>
+      </div>
+    </nb-card-body>
+  </nb-card>
+</div>
+
+<div class="col-lg-6">
+  <nb-card>
+    <nb-card-header>Topics</nb-card-header>
+    <nb-card-body>
+      <ng2-smart-table
+        [settings]="settings"
+        [source]="topics"
+        (deleteConfirm)="onDeleteConfirm($event)"
+      >
+      </ng2-smart-table>
+    </nb-card-body>
+  </nb-card>
+</div>

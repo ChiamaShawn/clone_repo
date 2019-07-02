@@ -1,0 +1,29 @@
+
+<div class="col-lg-6">
+  <nb-card>
+    <nb-card-header>Create Subject</nb-card-header>
+    <nb-card-body>
+        <div class="row full-name-inputs">
+          <form [formGroup]="subject_form" class="col-md-6">
+              <div class="input-group">
+                  <input type="text" formControlName="subject_name" nbInput fullWidth placeholder="Subject Name">
+                </div>
+          </form>
+
+            <div class="button-container">
+                <input (click)="onClick()" nbButton type="submit" value="Add Subject"/>
+              </div>
+          </div>
+    </nb-card-body>
+  </nb-card>
+</div>
+
+<div class="col-lg-6">
+    <nb-card>
+      <nb-card-header>Subject Listing</nb-card-header>
+      <nb-card-body>
+          <ng2-smart-table [settings]="settings" [source]="subjects" (deleteConfirm)="onDeleteConfirm($event)">
+            </ng2-smart-table>
+      </nb-card-body>
+    </nb-card>
+  </div>

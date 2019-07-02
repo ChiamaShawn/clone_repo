@@ -1,0 +1,102 @@
+<div class="row">
+  <div class="col-lg-6">
+    <nb-card>
+      <nb-card-header>Create Topic</nb-card-header>
+      <nb-card-body>
+        <div class="row full-name-inputs">
+          <form [formGroup]="notes_form" class="col-md-8">
+            <h5>
+              Subject:
+            </h5>
+            <div class="input-group" style="margin-top:20px;">
+              <select
+                formControlName="subject_id"
+                class="form-control"
+                placeholder="Subject"
+                (change)="onSubjectChange($event.target.value)"
+              >
+                <option
+                  value="{{ subject.id }}"
+                  *ngFor="let subject of subjects"
+                >
+                  <p>
+                    {{ subject.subject_name }}
+                  </p>
+                </option>
+              </select>
+            </div>
+            <h5 style="margin-top:20px;">
+              Class:
+            </h5>
+            <div class="input-group" style="margin-top:20px;">
+              <select
+                formControlName="class_"
+                class="form-control"
+                placeholder="Class"
+              >
+                <option value="{{ class.id }}" *ngFor="let class of classes"
+                  ><p>
+                    {{ class.class_name }}
+                  </p></option
+                >
+              </select>
+            </div>
+            <h5 style="margin-top:20px;">
+              Topic:
+            </h5>
+            <div class="input-group" style="margin-top:20px;">
+              <select
+                formControlName="topic_id"
+                class="form-control"
+                placeholder="Class"
+              >
+                <option value="{{ topic.id }}" *ngFor="let topic of topics">
+                  <p>
+                    {{ topic.topic_name }}
+                  </p>
+                </option>
+              </select>
+            </div>
+            <h5 style="margin-top:20px;">
+              Subtopic:
+            </h5>
+            <div class="input-group" style="margin-top:20px;">
+              <select
+                formControlName="subtopic_id"
+                class="form-control"
+                placeholder="Class"
+              >
+                <option
+                  value="{{ subtopic.id }}"
+                  *ngFor="let subtopic of subtopics"
+                >
+                  <p>
+                    {{ subtopic.subtopic_name }}
+                  </p>
+                </option>
+              </select>
+            </div>
+          </form>
+        </div>
+      </nb-card-body>
+    </nb-card>
+  </div>
+
+
+</div>
+<div class="row">
+  <ckeditor
+    [config]="model.config"
+    class="col-md-12"
+    [(ngModel)]="model.editorData"
+    [editor]="Editor"
+  ></ckeditor>
+  <div class="button-container" style="margin-top:20px;">
+    <input
+      (click)="submitNotes()"
+      nbButton
+      type="submit"
+      value="Submit Notes"
+    />
+  </div>
+</div>

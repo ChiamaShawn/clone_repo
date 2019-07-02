@@ -6,32 +6,49 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ECommerceComponent } from './e-commerce/e-commerce.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
 import { CreateProductComponent } from './create-product/create-product.component';
-
+import { SubjectComponent } from "./subject/subject.component";
+import { TopicsComponent } from './topics/topics.component';
+import { SubtopicComponent } from './subtopic/subtopic.component';
+import { NotesComponent } from './notes/notes.component';
+import { StatsComponent } from './stats/stats.component';
+import { CreateschoolComponent } from "./createschool/createschool.component";
+import { CreateStudentComponent } from "./create-student/create-student.component";
 const routes: Routes = [{
   path: '',
   component: PagesComponent,
   children: [{
     path: 'dashboard',
     component: ECommerceComponent,
-  }, {
-    path: 'iot-dashboard',
-    component: DashboardComponent,
-  }, {
-    path: 'ui-features',
-    loadChildren: './ui-features/ui-features.module#UiFeaturesModule',
-  }, {
-    path: 'modal-overlays',
-    loadChildren: './modal-overlays/modal-overlays.module#ModalOverlaysModule',
-  }, {
-    path: 'extra-components',
-    loadChildren: './extra-components/extra-components.module#ExtraComponentsModule',
-  }, {
-    path: 'bootstrap',
-    loadChildren: './bootstrap/bootstrap.module#BootstrapModule',
-  }, {
-    path: 'maps',
-    loadChildren: './maps/maps.module#MapsModule',
-  }, {
+  },
+  {
+    path: 'stats',
+    component: StatsComponent
+  },
+  {
+    path: 'create-subject',
+    component: SubjectComponent
+  },
+  {
+    path: 'create-topics',
+    component: TopicsComponent
+  },
+  {
+    path: 'create-subtopic',
+    component: SubtopicComponent
+  },
+  {
+    path: 'create-notes',
+    component: NotesComponent
+  },
+  {
+    path: 'create-school',
+    component: CreateschoolComponent
+  },
+  {
+    path: 'create-student',
+    component: CreateStudentComponent
+  },
+   {
     path: 'charts',
     loadChildren: './charts/charts.module#ChartsModule',
   }, {
@@ -45,14 +62,7 @@ const routes: Routes = [{
     loadChildren: './tables/tables.module#TablesModule',
 
   },
-  {
-    path:'create',
-   loadChildren: './create-product/create-product.module#CreateProductModule'
-  },
    {
-    path: 'miscellaneous',
-    loadChildren: './miscellaneous/miscellaneous.module#MiscellaneousModule',
-  }, {
     path: '',
     redirectTo: 'dashboard',
     pathMatch: 'full',
