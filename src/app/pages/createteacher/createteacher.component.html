@@ -32,10 +32,10 @@
 
 <div class="col-lg-12">
   <nb-card>
-    <nb-card-header>Student Listing</nb-card-header>
+    <nb-card-header>Teacher Listing</nb-card-header>
     <nb-card-body>
       <ng2-smart-table
-        [source]="students"
+        [source]="teachers"
         [settings]="settings"
         (deleteConfirm)="onDeleteConfirm($event)" (editConfirm)="onSaveConfirm($event)"
         (createConfirm)="onCreateConfirm($event)"

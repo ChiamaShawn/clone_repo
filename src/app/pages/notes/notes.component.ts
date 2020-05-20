@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import * as ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { PageServiceService } from "../page-service.service";
 import { FormControl, Validators, FormGroup } from "@angular/forms";
+import { ToastrService } from 'ngx-toastr';
 import CKFinder from "@ckeditor/ckeditor5-ckfinder/src/ckfinder";
 @Component({
   selector: "ngx-notes",
@@ -17,7 +18,7 @@ export class NotesComponent implements OnInit {
   subtopics: any;
   notes_form: any;
   public model = {
-    editorData: "<p>Hello, world!</p>",
+    editorData: "",
     config: {
       // Enable the "Insert image" button in the toolbar.
 
@@ -27,7 +28,7 @@ export class NotesComponent implements OnInit {
     }
   };
 
-  constructor(private page_service: PageServiceService) {
+  constructor(private page_service: PageServiceService, private toaster_service: ToastrService) {
     const subject_id = new FormControl("", Validators.required);
     const class_ = new FormControl("", Validators.required);
     const topic_id = new FormControl("", Validators.required);
@@ -61,15 +62,18 @@ export class NotesComponent implements OnInit {
       this.classes = response;
     });
   }
-  getTopics() {
-    this.page_service.getTopics().subscribe(response => {
+  getTopics(){
+    console.log(this.notes_form.value.subject_id);
+    console.log(this.notes_form.value.class_)
+    this.page_service.getTopicsFromClass(this.notes_form.value.subject_id, this.notes_form.value.class_).subscribe(response => {
       console.log(response);
       this.topics = response;
-    });
+    })
   }
   getSubtopics() {
-    this.page_service.getSubtopics().subscribe(response => {
+    this.page_service.getSubtopicsWhereTopic(this.notes_form.value.topic_id).subscribe(response => {
       console.log(response);
+      console.log()
       this.subtopics = response;
     });
   }
@@ -81,6 +85,11 @@ export class NotesComponent implements OnInit {
       .uploadNotes(this.notes_form.value, this.model.editorData)
       .subscribe(response => {
         console.log(response);
+        // alert("Notes uploaded successfully");
+        this.toaster_service.success('Successs', 'Notes uploaded successfully.');
+      }, err => {
+        console.log(err);
+        this.toaster_service.error('Failed', 'Notes Upload failed');
       });
   }
 }

@@ -13,13 +13,12 @@ import { NotesComponent } from './notes/notes.component';
 import { StatsComponent } from './stats/stats.component';
 import { CreateschoolComponent } from "./createschool/createschool.component";
 import { CreateStudentComponent } from "./create-student/create-student.component";
+import { CreateQuizComponent } from './create-quiz/create-quiz.component';
+import { CreateteacherComponent } from './createteacher/createteacher.component';
 const routes: Routes = [{
   path: '',
   component: PagesComponent,
-  children: [{
-    path: 'dashboard',
-    component: ECommerceComponent,
-  },
+  children: [
   {
     path: 'stats',
     component: StatsComponent
@@ -48,6 +47,14 @@ const routes: Routes = [{
     path: 'create-student',
     component: CreateStudentComponent
   },
+  {
+    path: 'create-quiz',
+    component: CreateQuizComponent
+  },
+  {
+    path: 'create-teacher',
+    component: CreateteacherComponent
+  },
    {
     path: 'charts',
     loadChildren: './charts/charts.module#ChartsModule',
@@ -64,7 +71,7 @@ const routes: Routes = [{
   },
    {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'create-school',
     pathMatch: 'full',
   }, {
     path: '**',

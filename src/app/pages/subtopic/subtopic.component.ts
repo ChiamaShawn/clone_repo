@@ -66,7 +66,7 @@ export class SubtopicComponent implements OnInit {
   ngOnInit() {
     this.getSubjects();
     this.getClasses();
-    this.getTopics();
+    // this.getTopics();
     this.getSubtopics();
   }
 
@@ -85,8 +85,9 @@ export class SubtopicComponent implements OnInit {
     })
   }
   getTopics(){
-
-    this.page_service.getTopics().subscribe(response => {
+    console.log(this.subtopic_form.value.subject_id);
+    console.log(this.subtopic_form.value.class_)
+    this.page_service.getTopicsFromClass(this.subtopic_form.value.subject_id, this.subtopic_form.value.class_).subscribe(response => {
       console.log(response);
       this.topics = response;
     })
@@ -108,4 +109,6 @@ export class SubtopicComponent implements OnInit {
       this.getSubtopics();
     })
   }
+
+
 }

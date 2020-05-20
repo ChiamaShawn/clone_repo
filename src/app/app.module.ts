@@ -14,20 +14,30 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ThemeModule } from './@theme/theme.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { CreateStudentComponent } from './create-student/create-student.component';
+import { LoginComponent } from './pages/login/login.component';
+import { ToastrModule } from 'ngx-toastr';
+import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider } from 'angular4-social-login';
+const google_oauth_client_id:string = '32991838022-qghs05udldvlccb9e4i14ruf79jc2vup.apps.googleusercontent.com';
+let config = new AuthServiceConfig([
+  {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider(google_oauth_client_id)
+  }
+]);
 // import { CreateschoolComponent } from './createschool/createschool.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, LoginComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
-
+    ToastrModule.forRoot(),
     NgbModule.forRoot(),
     ThemeModule.forRoot(),
     CoreModule.forRoot(),
+    SocialLoginModule.initialize(config)
   ],
   bootstrap: [AppComponent],
   providers: [

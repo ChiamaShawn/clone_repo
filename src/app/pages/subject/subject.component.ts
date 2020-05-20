@@ -12,7 +12,9 @@ export class SubjectComponent implements OnInit {
   subjects: any;
   settings = {
     actions: {
-      add:false
+      add:false,
+      edit:false,
+      delete:false,
     },
     edit: {
       editButtonContent: '<i class="nb-edit"></i>',

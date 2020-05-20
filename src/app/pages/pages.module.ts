@@ -19,6 +19,11 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { } from '@ckeditor/ckeditor5-build-classic';
 import { CreateschoolComponent } from './createschool/createschool.component';
 import { CreateStudentComponent } from './create-student/create-student.component';
+import { TeacherComponent } from './teacher/teacher.component';
+import { QuizzesComponent } from './quizzes/quizzes.component';
+import { CreateQuizComponent } from './create-quiz/create-quiz.component';
+import { CreateteacherComponent } from './createteacher/createteacher.component';
+import { LoginComponent } from './login/login.component';
 
 const PAGES_COMPONENTS = [
   PagesComponent,
@@ -43,6 +48,10 @@ const PAGES_COMPONENTS = [
     StatsComponent,
     CreateschoolComponent,
     CreateStudentComponent,
+    TeacherComponent,
+    QuizzesComponent,
+    CreateQuizComponent,
+    CreateteacherComponent,
   ],
 })
 export class PagesModule {

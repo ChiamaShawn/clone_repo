@@ -23,6 +23,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/pages/create-student',
   },
   {
+    title: 'Add Teacher',
+    icon: 'nb-compose',
+    link: '/pages/create-teacher',
+  },
+  {
     title: 'Create Subject',
     icon: 'nb-compose',
     link: '/pages/create-subject',
@@ -39,8 +44,13 @@ export const MENU_ITEMS: NbMenuItem[] = [
   },
   {
     title: 'Make Notes',
-    icon: 'nb-home',
+    icon: 'nb-compose',
     link: '/pages/create-notes',
+  },
+  {
+    title: 'Create Quiz',
+    icon: 'nb-compose',
+    link: '/pages/create-quiz',
   },
   // {
   //   title: 'FEATURES',
@@ -100,55 +110,55 @@ export const MENU_ITEMS: NbMenuItem[] = [
   //     },
   //   ],
   // },
-  {
-    title: 'Forms',
-    icon: 'nb-compose',
-    children: [
-      {
-        title: 'Create Product',
-        link: '/pages/create'
-      },
-      {
-        title: 'Form Inputs',
-        link: '/pages/forms/inputs',
-      },
-      {
-        title: 'Form Layouts',
-        link: '/pages/forms/layouts',
-      },
-      {
-        title: 'Buttons',
-        link: '/pages/forms/buttons',
-      },
-      {
-        title: 'Datepicker',
-        link: '/pages/forms/datepicker',
-      },
-    ],
-  },
-  {
-    title: 'UI Features',
-    icon: 'nb-keypad',
-    link: '/pages/ui-features',
-    children: [
-      {
-        title: 'Grid',
-        link: '/pages/ui-features/grid',
-      },
-      {
-        title: 'Icons',
-        link: '/pages/ui-features/icons',
-      },
-      {
-        title: 'Typography',
-        link: '/pages/ui-features/typography',
-      },
-      {
-        title: 'Animated Searches',
-        link: '/pages/ui-features/search-fields',
-      },
-    ],
-  },
+  // {
+  //   title: 'Forms',
+  //   icon: 'nb-compose',
+  //   children: [
+  //     {
+  //       title: 'Create Product',
+  //       link: '/pages/create'
+  //     },
+  //     {
+  //       title: 'Form Inputs',
+  //       link: '/pages/forms/inputs',
+  //     },
+  //     {
+  //       title: 'Form Layouts',
+  //       link: '/pages/forms/layouts',
+  //     },
+  //     {
+  //       title: 'Buttons',
+  //       link: '/pages/forms/buttons',
+  //     },
+  //     {
+  //       title: 'Datepicker',
+  //       link: '/pages/forms/datepicker',
+  //     },
+  //   ],
+  // },
+  // {
+  //   title: 'UI Features',
+  //   icon: 'nb-keypad',
+  //   link: '/pages/ui-features',
+  //   children: [
+  //     {
+  //       title: 'Grid',
+  //       link: '/pages/ui-features/grid',
+  //     },
+  //     {
+  //       title: 'Icons',
+  //       link: '/pages/ui-features/icons',
+  //     },
+  //     {
+  //       title: 'Typography',
+  //       link: '/pages/ui-features/typography',
+  //     },
+  //     {
+  //       title: 'Animated Searches',
+  //       link: '/pages/ui-features/search-fields',
+  //     },
+  //   ],
+  // },
   // {
   //   title: 'Modal & Overlays',
   //   icon: 'nb-layout-default',
@@ -247,16 +257,16 @@ export const MENU_ITEMS: NbMenuItem[] = [
   //     },
   //   ],
   // },
-  {
-    title: 'Tables',
-    icon: 'nb-tables',
-    children: [
-      {
-        title: 'Smart Table',
-        link: '/pages/tables/smart-table',
-      },
-    ],
-  },
+  // {
+  //   title: 'Tables',
+  //   icon: 'nb-tables',
+  //   children: [
+  //     {
+  //       title: 'Smart Table',
+  //       link: '/pages/tables/smart-table',
+  //     },
+  //   ],
+  // },
   // {
   //   title: 'Miscellaneous',
   //   icon: 'nb-shuffle',

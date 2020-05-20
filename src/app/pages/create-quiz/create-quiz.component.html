@@ -1,0 +1,216 @@
+<div class="scroll-x">
+  <div class="container">
+    <form [formGroup]="detail_form" class="row">
+      <div class="col-md-3">
+        <h5 style="margin-top:20px;">
+          Subject
+        </h5>
+        <div class="input-group" style="margin-top:20px;">
+          <select
+            formControlName="subject_id"
+            class="form-control"
+            placeholder="Class"
+          >
+            <option value="{{ subject.id }}" *ngFor="let subject of subjects"
+              ><p>
+                {{ subject.subject_name }}
+              </p></option
+            >
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <h5 style="margin-top:20px;">
+          Class:
+        </h5>
+        <div class="input-group" style="margin-top:20px;">
+          <select
+            formControlName="class_"
+            class="form-control"
+            placeholder="Class"
+            (change)="getTopics()"
+          >
+            <option value="{{ class.id }}" *ngFor="let class of classes"
+              ><p>
+                {{ class.class_name }}
+              </p></option
+            >
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <h5 style="margin-top:20px;">
+          Topic:
+        </h5>
+        <div class="input-group" style="margin-top:20px;">
+          <select
+            formControlName="topic_id"
+            class="form-control"
+            placeholder="Class"
+            (change)="getSubtopics()"
+          >
+            <option value="{{ topic.id }}" *ngFor="let topic of topics">
+              <p>
+                {{ topic.topic_name }}
+              </p>
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <h5 style="margin-top:20px;">
+          Subtopic:
+        </h5>
+        <div class="input-group" style="margin-top:20px;">
+          <select
+            formControlName="subtopic_id"
+            class="form-control"
+            placeholder="Class"
+          >
+            <option
+              value="{{ subtopic.id }}"
+              *ngFor="let subtopic of subtopics"
+            >
+              <p>
+                {{ subtopic.subtopic_name }}
+              </p>
+            </option>
+          </select>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="container">
+    <div class="row" style="margin-top:20px;margin-bottom:20px;">
+      <div class="col-md-12">
+          <p>Question</p>
+          <ckeditor
+            [editor]="Editor"
+            [(ngModel)]="model.question"
+            placeholder="Question"
+          ></ckeditor>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="container">
+
+    <div class="row">
+      <div class="col-md-3">
+          <p>Option A</p>
+          <ckeditor
+
+          [editor]="Editor"
+          [(ngModel)]="model.option_a"
+          placeholder="Option A"
+        ></ckeditor>
+      </div>
+     <div class="col-md-3">
+       <p>Option A Reasoning</p>
+        <ckeditor
+
+        [editor]="Editor"
+        [(ngModel)]="model.option_a_explanation"
+        placeholder="Option A explanation"
+      ></ckeditor>
+     </div>
+     <div class="col-md-3">
+       <p>Option B</p>
+        <ckeditor
+
+        [editor]="Editor"
+        [(ngModel)]="model.option_b"
+        placeholder="Option B"
+        data="<p>Option B</p>"
+      ></ckeditor>
+     </div>
+      <div class="col-md-3">
+        <p>Option B Reasoning</p>
+      <ckeditor
+
+        [editor]="Editor"
+        [(ngModel)]="model.option_b_explanation"
+        placeholder="Option B explanation"
+        data="<p>Option B explanation</p>"
+      ></ckeditor>
+      </div>
+    </div>
+    <div class="row" style="margin-top:20px;margin-bottom:50px;">
+      <div class="col-md-3">
+        <p>Option C</p>
+          <ckeditor
+
+          [(ngModel)]="model.option_c"
+          [editor]="Editor"
+          placeholder="Option C"
+          data="<p>Option C</p>"
+        ></ckeditor>
+      </div>
+      <div class="col-md-3">
+        <p>Option C Reasoning</p>
+          <ckeditor
+
+          [editor]="Editor"
+          [(ngModel)]="model.option_c_explanation"
+          placeholder="Option C explanation"
+          data="<p>Option C explanation</p>"
+        ></ckeditor>
+      </div>
+      <div class="col-md-3">
+        <p>Option D</p>
+          <ckeditor
+          [editor]="Editor"
+          [(ngModel)]="model.option_d"
+
+          data="<p>Option D</p>"
+        ></ckeditor>
+      </div>
+        <div class="col-md-3">
+          <p>Option D Reasoning</p>
+            <ckeditor
+
+            [editor]="Editor"
+            [(ngModel)]="model.option_d_explanation"
+            data="<p>Option D explanation</p>"
+          ></ckeditor>
+        </div>
+    <div class="row" style="margin-top:20px;margin-bottom:20px;">
+        <div class="col-md-5">
+            <p>Additional Notes</p>
+             <ckeditor
+             style="margin-top:20px;"
+             [editor]="Editor"
+             [(ngModel)]="model.additional_notes"
+             data="<p>Additional Notes</p>"
+           ></ckeditor>
+          </div>
+
+           <div class="col-md-3" style="margin-top:20px;">
+             <label>Correct Answer</label>
+             <select
+               [(ngModel)]="model.answer"
+               class="form-control"
+               placeholder="Correct Answer"
+             >
+               <option value="1">Option A</option>
+               <option value="2">Option B</option>
+               <option value="3">Option C</option>
+               <option value="4">Option D</option>
+             </select>
+           </div>
+           <div class="col-md-2" style="margin-top:20px;">
+             <button
+               (click)="postQuestion()"
+               class="btn btn-primary"
+               style="margin-top:20px;"
+             >
+               New Question
+             </button>
+
+           </div>
+    </div>
+
+    </div>
+  </div>
+</div>

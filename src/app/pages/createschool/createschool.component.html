@@ -1,31 +1,46 @@
 <div class="row">
     <div class="col-lg-6">
       <nb-card>
-        <nb-card-header>Create Topic</nb-card-header>
+        <nb-card-header>Create School</nb-card-header>
         <nb-card-body>
           <div class="row full-name-inputs">
-            <form [formGroup]="school_form" class="col-md-8">
+            <form  class="col-md-8" [formGroup]="school_form">
               <h5 style="margin-top:20px;">
-                Subtopic:
+                School Name:
               </h5>
               <div class="input-group" style="margin-top:20px;">
-                <select
-                  formControlName="subtopic_id"
+                <input
+                  formControlName="school_name"
                   class="form-control"
-                  placeholder="Class"
+                  placeholder="School Name"
                 >
-                  <option
-                    value="{{ subtopic.id }}"
-                    *ngFor="let subtopic of subtopics"
-                  >
-                    <p>
-                      {{ subtopic.subtopic_name }}
-                    </p>
-                  </option>
-                </select>
               </div>
+              <h5 style="margin-top:20px;">
+                  School County:
+                </h5>
+              <div class="input-group" style="margin-top:20px;">
+                  <select formControlName="county_id"
+                    class="form-control"
+                    placeholder="Class">
+                  <option value="{{county.county_id}}" *ngFor="let county of counties">
+                    <p>{{county.county_name}}</p>
+                  </option>
+                  </select>
+                </div>
+                <div class="button-container" style="margin-top:20px;">
+                    <input (click)="onClick()" nbButton type="submit" value="Add School"/>
+                  </div>
             </form>
           </div>
         </nb-card-body>
       </nb-card>
     </div>
+    <div class="col-lg-6">
+        <nb-card>
+          <nb-card-header>School Listing</nb-card-header>
+          <nb-card-body>
+              <ng2-smart-table [source]="schools" [settings]="settings">
+              </ng2-smart-table>
+          </nb-card-body>
+        </nb-card>
+      </div>

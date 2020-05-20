@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MENU_ITEMS } from './pages-menu';
+import { locateHostElement } from '@angular/core/src/render3/instructions';
+import { LocalDataSource } from 'ng2-smart-table';
 
 @Component({
   selector: 'ngx-pages',
@@ -12,7 +14,21 @@ import { MENU_ITEMS } from './pages-menu';
     </ngx-sample-layout>
   `,
 })
-export class PagesComponent {
+export class PagesComponent implements OnInit{
 
+  constructor(private router: Router){
+
+  }
   menu = MENU_ITEMS;
+
+  ngOnInit(){
+    this.checkLoginStatus();
+  }
+  checkLoginStatus(){
+    if(localStorage.getItem('angaza_admin_token') == null || localStorage.getItem('angaza_admin_token') == "" ){
+      this.router.navigateByUrl('/auth');
+    }else{
+      this.router.navigateByUrl('/pages');
+    }
+  }
 }

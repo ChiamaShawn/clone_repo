@@ -1,21 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 import { PageServiceService } from "../page-service.service";
-import { ToastrService } from 'ngx-toastr';
-import { FormControl, Validators, FormGroup} from "@angular/forms";
+
+import { FormControl, Validators, FormGroup } from "@angular/forms";
+
 @Component({
-  selector: 'ngx-create-student',
-  templateUrl: './create-student.component.html',
-  styleUrls: ['./create-student.component.scss']
+  selector: "ngx-teacher",
+  templateUrl: "./teacher.component.html",
+  styleUrls: ["./teacher.component.scss"]
 })
-export class CreateStudentComponent implements OnInit {
+export class TeacherComponent implements OnInit {
   students: any;
   student_form: any;
   school_code: any;
-  school_form: any
+  school_form: any;
   schools: any;
   settings = {
     action: {
-
       edit: false,
       delete: false
     },
@@ -29,52 +29,45 @@ export class CreateStudentComponent implements OnInit {
     edit: {
       editButtonContent: '<i class="nb-edit"></i>',
       saveButtonContent: '<i class="nb-checkmark"></i>',
-      cancelButtonContent: '<i class="nb-close"></i>',
+      cancelButtonContent: '<i class="nb-close"></i>'
     },
     delete: {
       deleteButtonContent: '<i class="nb-trash"></i>',
-      confirmDelete: true,
+      confirmDelete: true
     },
 
     columns: {
-      student_code: {
-        title: 'Student Code',
-        type: String,
-        editable:false,
-          addable: false,
+      id: {
+        title: "ID",
+        type: "number"
       },
       name: {
-        title: 'Student Name',
-        type: 'string',
+        title: "Student Name",
+        type: "string"
       },
-
       school_code: {
-        title: 'School Code',
-        type: 'string',
-        editable:false,
-        addable: false
+        title: "School Code",
+        type: "string"
+      },
+      email: {
+        title: "Email",
+        type: "string"
+      },
+      password: {
+        title: "password"
       },
       class: {
-        title: 'Grade'
+        title: "Grade"
       }
-
-
-
-    },
+    }
   };
-  constructor(private page_service:PageServiceService, private toaster_service: ToastrService) {
-    const school_code = new FormControl('', Validators.required)
-    this.school_form = new FormGroup({
-      school_code:school_code
-    })
-
-  }
+  constructor(private page_service: PageServiceService) {}
 
   ngOnInit() {
     this.getSchools();
-    this.getStudents();
+    this.getTeachers();
   }
-  getStudents(){
+  getTeachers(){
     this.page_service.getStudents().subscribe(response => {
       console.log(response);
       this.students = response
@@ -92,7 +85,6 @@ export class CreateStudentComponent implements OnInit {
   }
   onSchoolChange(e){
     console.log(e);
-    this.school_code = e;
     this.page_service.getStudentsFromSchool(e).subscribe(response => {
       console.log(e);
       console.log(response);
@@ -102,7 +94,7 @@ export class CreateStudentComponent implements OnInit {
   onCreateConfirm(event):void {
     console.log(event);
     let data = {
-      user_type: "student",
+      user_type: "teacher",
       password: this.school_form.value.school_code,
       school_code: this.school_form.value.school_code,
       name: event.newData.name,
@@ -111,16 +103,7 @@ export class CreateStudentComponent implements OnInit {
     }
     this.page_service.createStudent(data).subscribe(response => {
       console.log(response);
-      this.toaster_service.success('Success', 'Student Created');
-
-      this.page_service.getStudentsFromSchool(this.school_code).subscribe(response => {
-        console.log(response);
-        this.students = response;
-      });
       event.confirm.resolve();
-    }, err => {
-      console.log(err);
-      this.toaster_service.error('Failed', 'Unable to create Student');
     })
   }
 
